@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS specializations (
 CREATE TABLE IF NOT EXISTS visits (
 	animals_id INT NOT NULL REFERENCES animals (id),
 	vets_id INT NOT NULL REFERENCES vets (id),
-	date_of_visit DATE NOT NULL
+	date_of_visit DATE NOT NULL,
+    PRIMARY KEY (animals_id, vets_id)
 );
 
 -- Add an email column to your owners table
