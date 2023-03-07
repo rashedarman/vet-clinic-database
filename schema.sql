@@ -53,16 +53,16 @@ CREATE TABLE IF NOT EXISTS specializations (
 
 -- Intermediary table to hold m-n relationship between animals and vets
 CREATE TABLE IF NOT EXISTS visits (
-	animals_id INT NOT NULL REFERENCES animals (id),
-	vets_id INT NOT NULL REFERENCES vets (id),
+	animal_id INT NOT NULL REFERENCES animals (id),
+	vet_id INT NOT NULL REFERENCES vets (id),
 	date_of_visit DATE NOT NULL,
-    PRIMARY KEY (animals_id, vets_id)
+    PRIMARY KEY (animal_id, vet_id)
 );
 
 -- Add an email column to your owners table
-ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+ALTER TABLE owners ADD COLUMN email VARCHAR(100);
 
 -- Add indexes
-CREATE INDEX ON visits (animals_id);
-CREATE INDEX ON visits (vets_id);
+CREATE INDEX ON visits (animal_id);
+CREATE INDEX ON visits (vet_id);
 CREATE INDEX ON owners (email);
