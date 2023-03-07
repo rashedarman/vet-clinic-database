@@ -26,6 +26,13 @@ CREATE TABLE invoice_items (
   treatment_id INT REFERENCES treatments(id)
 );
 
+-- Many-to-many relationship between medical_histories and treatments
+CREATE TABLE medical_history_treatments (
+  medical_history_id INT REFERENCES medical_histories(id),
+  treatment_id INT REFERENCES treatments(id),
+  PRIMARY KEY (medical_history_id, treatment_id)
+);
+
 CREATE TABLE invoices (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   total_amount NUMERIC(10, 2),
